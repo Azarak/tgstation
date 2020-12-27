@@ -201,6 +201,40 @@
 /datum/point/vector/proc/on_z_change()
 	return
 
+/datum/point/vector/proc/angle_to_dir(include_diagonals = FALSE)
+	if(include_diagonals)
+		switch(angle)
+			if(-180 to -157.5)
+				return SOUTH
+			if(-157.5 to -112.5)
+				return SOUTHWEST
+			if(-112.5 to -67.5)
+				return WEST
+			if(-67.5 to -22.5)
+				return NORTHWEST
+			if(-22.5 to 22.5)
+				return NORTH
+			if(22.5 to 67.5)
+				return NORTHEAST
+			if(67.5 to 112.5)
+				return EAST
+			if(112.5 to 157.5)
+				return SOUTHEAST
+			if(157.5 to 180)
+				return SOUTH
+	else
+		switch(angle)
+			if(-180 to -135)
+				return SOUTH
+			if(-135 to -45)
+				return WEST
+			if(-45 to 45)
+				return NORTH
+			if(45 to 135)
+				return EAST
+			if(135 to 180)
+				return SOUTH
+
 /datum/point/vector/processed		//pixel_speed is per decisecond.
 	var/last_process = 0
 	var/last_move = 0
